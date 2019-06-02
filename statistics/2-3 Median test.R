@@ -1,0 +1,12 @@
+data(CO2)
+m=CO2$uptake
+m=unique(m)
+m.median=median(m)
+splus=sum(m>m.median)
+sminus=sum(m<m.median)
+k=min(splus,sminus)
+n=splus+sminus
+binom.test(k,n,0.5)
+wilcox.test(m-m.median)
+plot(density(m))
+ks.test(m,pnorm,mean(m),sd(m))
